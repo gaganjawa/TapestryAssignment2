@@ -1,0 +1,27 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] TapestryAssignment2
+[INFO] tapestry-api
+[INFO] tapestry-impl
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] TapestryAssignment2 ................................ SKIPPED
+[INFO] tapestry-api ....................................... SKIPPED
+[INFO] tapestry-impl ...................................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.393 s
+[INFO] Finished at: 2016-07-06T19:14:53+05:30
+[INFO] Final Memory: 8M/246M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Could not find goal '' in plugin org.apache.maven.plugins:maven-archetype-plugin:2.4 among available goals crawl, create, create-from-project, generate, help, integration-test, jar, update-local-catalog -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoNotFoundException
