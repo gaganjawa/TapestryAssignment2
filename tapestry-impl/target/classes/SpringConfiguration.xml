@@ -19,7 +19,7 @@
 	<jpa:repositories base-package="com.psl.tapestry.repo" />
     <context:component-scan base-package="com.psl.tapestry" />
     
-    <!-- <bean id="userService" class="com.psl.tapestry.service.UserServiceImpl" /> -->
+    <bean id="userService" class="com.psl.tapestry.service.UserServiceImpl" /> 
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

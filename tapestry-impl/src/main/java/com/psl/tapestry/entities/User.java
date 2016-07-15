@@ -68,11 +68,11 @@ public class User {
 		this.firstName = firstname;
 	}
 
-	public String getLastNameString() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastNameString(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 

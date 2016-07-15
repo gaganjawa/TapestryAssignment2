@@ -15,11 +15,15 @@ public interface UserService {
 	User createUser(User user);
 
 	User findUserById(int id);
+	
+	User findUserByEmail(String email);
 
 	User updateUser(int id, User user);
 
 	boolean deleteUser(int id) throws NoUserPresentException;
 
 	List<User> getAllUsers();
+
+	String testMethod(String string);
 
 }

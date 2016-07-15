@@ -1,0 +1,22 @@
+<html t:type="layout" title="UserView tapestry-web"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+	
+	
+	<t:if test="users">
+		<div class="row">
+			<div class="span12">
+
+				<table t:id="myGrid" t:type="Grid" source="users" row="user"
+					model="beanModel" pagerPosition="literal:both" rowsPerPage="${noOfRowsPerPage}"
+					reorder="literal:rowNo,firstName,lastName,username,password,email,mobile,enabled,locked">
+					<p:rowNoCell>
+						${rowNo}
+					</p:rowNoCell>
+
+				</table>
+			</div>
+		</div>
+	</t:if>
+	
+	
+</html>

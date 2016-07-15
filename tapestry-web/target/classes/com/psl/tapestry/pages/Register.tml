@@ -1,0 +1,11 @@
+
+<html t:type="layout" title="tapestry-web Register"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+
+
+	<t:beaneditform object="user"
+		reorder="username, firstName, lastName, password, email, mobile"
+		submitlabel="Register" />
+
+</html>
+	

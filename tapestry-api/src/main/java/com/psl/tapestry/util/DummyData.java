@@ -1,5 +1,8 @@
 package com.psl.tapestry.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DummyData {
 
@@ -12,4 +15,7 @@ public class DummyData {
 	public static boolean enabled = true;
 	public static boolean locked = false;
 	
+	public static List<Object> getDummyData() {
+		return new ArrayList<Object>();
+	}
 }

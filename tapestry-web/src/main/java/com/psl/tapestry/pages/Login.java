@@ -1,7 +1,5 @@
 package com.psl.tapestry.pages;
 
-import java.util.List;
-
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.InjectComponent;
@@ -16,7 +14,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.psl.tapestry.service.UserService;
-import com.psl.tapestry.ui.UserUI;
 
 @Import(stylesheet="login.css")
 public class Login {
@@ -31,7 +28,7 @@ public class Login {
 	private Index index;
 	
 	@InjectPage
-	private About about;
+	private UserView userView;
 
 	@InjectComponent
 	private Form login;
@@ -53,8 +50,6 @@ public class Login {
 
 	UserService userService = (UserService) applicationContext.getBean("userService");
 	
-	private List<UserUI> users;
-
 
 	void onValidateFromLogin() {
 		if (!email.equals("users@tapestry.apache.org") /*|| userService.findUserByEmail(email) != null*/) {
@@ -69,15 +64,12 @@ public class Login {
 
 	Object onSuccessFromLogin() {
 		logger.info("Login successful :: " + userService.testMethod("Gagan"));
-		try {
-			about.setLearn(email);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+//		userView.setUsers(userService.getAllUsers());
 		
 		alertManager.success("Welcome aboard!");
 
-		return about;
+		return userView;
 	}
 
 	void onFailureFromLogin() {
@@ -85,17 +77,6 @@ public class Login {
 		alertManager.error("I'm sorry but I can't log you in!");
 	}
 	
-	Object onRegister() {
-        return Index.class;
-    }
-
-	public List<UserUI> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<UserUI> users) {
-		this.users = users;
-	}
 	
 	Object onActionFromRegister() {
 		return Register.class;

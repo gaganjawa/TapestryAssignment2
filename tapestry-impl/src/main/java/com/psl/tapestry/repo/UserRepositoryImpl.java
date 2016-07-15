@@ -1,7 +1,7 @@
 package com.psl.tapestry.repo;
 
 //@Transactional
-public abstract class UserRepositoryImpl {//implements UserRepository {
+public class UserRepositoryImpl {//implements UserRepository {
 
 	/*@PersistenceContext
 	private EntityManager em;

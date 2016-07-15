@@ -33,7 +33,7 @@ public class SpringDataTest {
 
 	@Test
 	public void testFindUserById() {
-		User user = dao.findUserById(6);
+		User user = (User) dao.findUserById(6);
 		Assert.assertEquals(6, user.getId());
 	}
 
