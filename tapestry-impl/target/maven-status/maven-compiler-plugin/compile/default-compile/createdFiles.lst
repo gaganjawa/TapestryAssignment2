@@ -1,7 +1,0 @@
-com\psl\tapestry\entities\User.class
-com\psl\tapestry\service\UserService.class
-com\psl\tapestry\repo\UserRepository.class
-com\psl\tapestry\exception\NoUserPresentException.class
-com\psl\tapestry\service\UserServiceImpl.class
-com\psl\tapestry\controller\SpringDataApp.class
-com\psl\tapestry\repo\UserRepositoryImpl.class
