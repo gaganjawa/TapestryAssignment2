@@ -1,0 +1,77 @@
+
+<html t:type="layout" title="User Update"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+
+	<body class="container">
+		<h3>Update</h3>
+
+		<div class="row">
+			<t:form t:id="form" class="form-horizontal" validate="user">
+				<t:errors globalOnly="true" />
+
+				<t:if test="user">
+
+					<div class="form-group">
+						<t:label for="firstName" class="col-sm-3" />
+						<div class="col-sm-3">
+							<t:textfield t:id="firstName" value="user.firstName" />
+						</div>
+						<div class="col-sm-6">
+							<p class="form-control-static">
+								(required)
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<t:label for="lastName" class="col-sm-3" />
+						<div class="col-sm-3">
+							<t:textfield t:id="lastName" value="user.lastName" />
+						</div>
+						<div class="col-sm-6">
+							<p class="form-control-static">
+								(required)
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<t:label for="email" class="col-sm-3" />
+						<div class="col-sm-3">
+							<t:textfield t:id="email" value="user.email" />
+						</div>
+						<div class="col-sm-6">
+							<p class="form-control-static">
+								(required)
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<t:label for="mobile" class="col-sm-3" />
+						<div class="col-sm-3">
+							<t:textfield t:id="mobile" value="user.mobile" />
+						</div>
+						<div class="col-sm-6">
+							<p class="form-control-static">
+								(required)
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3 col-sm-offset-3">
+							<t:submit value="Save" />
+							<t:eventlink event="backPressed" class="btn btn-default">Back</t:eventlink>
+						</div>
+					</div>
+				</t:if>
+				<t:if test="!user">
+					user ${userId} does not exist.
+					<br />
+					<br />
+					<t:pagelink page="userView" class="btn btn-default">Cancel</t:pagelink>
+				</t:if>
+			</t:form>
+		</div>
+
+
+	</body>
+</html>
+ 
