@@ -60,11 +60,11 @@ public class User {
 		this.id = id;
 	}
 
-	public String getFirstname() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
+	public void setFirstName(String firstname) {
 		this.firstName = firstname;
 	}
 
@@ -127,7 +127,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstname=" + firstName
-				+ ", lastNameString=" + lastName + ", username=" + userName
+				+ ", lastName=" + lastName + ", username=" + userName
 				+ ", password=" + password + ", email=" + email + ", mobile="
 				+ mobile + ", enabled=" + enabled + ", locked=" + locked + "]";
 	}

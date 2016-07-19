@@ -20,7 +20,7 @@ public class DummyData {
 	
 	public static List<User> getUserList() {
 		User user = new User();
-		user.setFirstname(firstName);
+		user.setFirstName(firstName);
 		
 		List<User> list = new ArrayList<User>();
 		list.add(user);

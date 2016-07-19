@@ -5,19 +5,16 @@ import java.util.List;
 
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.beaneditor.BeanModel;
 import org.apache.tapestry5.corelib.components.Grid;
-import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.BeanModelSource;
 import org.apache.tapestry5.services.Request;
-import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
-import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.psl.tapestry.components.SimpleModal;
 import com.psl.tapestry.entities.User;
 import com.psl.tapestry.exception.NoUserPresentException;
 import com.psl.tapestry.service.UserService;
@@ -29,36 +26,16 @@ import com.psl.tapestry.service.UserService;
  *
  */
 public class UserView {
-
-	public enum Function {
-		REVIEW, UPDATE;
-	}
 	
 	@Property
 	private int userId;
 
-	private Function function;
-
-	@InjectComponent
-	private Zone paneZone;
-
-	@InjectComponent
-	private Zone modalZone;
-
-	@InjectComponent
-	private SimpleModal personUpdateModal;
-
 	@Inject
 	private Request request;
 
-	@Inject
-	private AjaxResponseRenderer ajaxResponseRenderer;
-
-	@Inject
-	private JavaScriptSupport javaScriptSupport;
-
 	private User user;
 
+	@SessionState
 	@Property
 	private List<User> users;
 
@@ -95,11 +72,9 @@ public class UserView {
 		rowNoWithCurrentPage++;
 	}
 
-	ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-			"SpringConfiguration.xml");
+	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("SpringConfiguration.xml");
 
-	UserService userService = (UserService) applicationContext
-			.getBean("userService");
+	UserService userService = (UserService) applicationContext.getBean("userService");
 
 	/**
 	 * Initialise list. Usually, it should be injected.
@@ -110,7 +85,6 @@ public class UserView {
 		try {
 			users = new ArrayList<User>();
 			users = userService.getAllUsers();
-			System.out.println(users);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -144,59 +118,13 @@ public class UserView {
 
 		return rowNo;
 	}
-
-	void onUpdate(int id) {
-		this.userId = id;
-		function = Function.UPDATE;
-		if (request.isXHR()) {
-			ajaxResponseRenderer.addRender(modalZone);
-		}
-	}
 	
-	void onUpdatedFromPersonUpdate(User user) {
-        this.userId = user.getId();
-        function = Function.REVIEW;
-
-        personUpdateModal.hide();
-
-        populateBody();
-
-        if (request.isXHR()) {
-            ajaxResponseRenderer.addRender(paneZone);
-        }
-    }
-	
-	void onCanceledFromPersonUpdate(int userId) {
-        this.userId = userId;
-        function = Function.REVIEW;
-
-        personUpdateModal.hide();
-
-        populateBody();
-
-        if (request.isXHR()) {
-            ajaxResponseRenderer.addRender(paneZone);
-        }
-    }
-
-        
-	public void populateBody() {
-
-        user = userService.findUserById(userId);
-
-        if (user == null) {
-            throw new IllegalStateException("Database data has not been set up!");
-        }
-    }
-
-
-	public void onActionFromDelete(int id) throws NoUserPresentException {
-		users.remove(userService.findUserById(id));
+	void onDelete(int id) throws NoUserPresentException {
+		user = userService.findUserById(id);
+		users.remove(user);
 		userService.deleteUser(id);
+		return;
 	}
 	
-	public boolean isFunction(Function function) {
-        return function == this.function;
-    }
 
 }

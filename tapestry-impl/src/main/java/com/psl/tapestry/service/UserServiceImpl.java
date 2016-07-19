@@ -38,13 +38,15 @@ public class UserServiceImpl implements UserService {
 
 	public User updateUser(int id, User user) {
 		User u = em.merge(user);
-		userRepository.delete(id);
-		return userRepository.save(user);
+		em.flush();
+//		userRepository.delete(u);
+		return u;
 	}
 
 	public boolean deleteUser(int id) throws NoUserPresentException {
 		if (userRepository.exists(id)) {
 			userRepository.delete(id);
+			userRepository.flush();
 			return true;
 		} else {
 			throw new NoUserPresentException("User with id:"+id+" does not exists.");
@@ -62,6 +64,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public User findUserByEmail(String email) {
-		return (User) em.createQuery("SELECT u FROM User u where email="+email, User.class).getSingleResult();
+		return (User) em.createQuery("SELECT u FROM User u where email='"+email+"'", User.class).getSingleResult();
 	}
 }

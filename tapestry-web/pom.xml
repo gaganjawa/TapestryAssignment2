@@ -74,17 +74,13 @@
 			<version>${tapestry-release-version}</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<!--dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>3.6.10.Final</version>
-		</dependency>
 		<dependency>
-			<groupId>org.apache.tapestry</groupId>
-			<artifactId>tapestry-hibernate</artifactId>
-			<version>5.4.1</version>
-		</dependency-->
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.7</version>
+		</dependency>
+		
+
 	</dependencies>
 	<build>
 		<finalName>tapestry-web</finalName>

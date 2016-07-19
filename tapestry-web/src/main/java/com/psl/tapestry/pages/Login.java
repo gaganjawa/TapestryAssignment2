@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.psl.tapestry.entities.User;
 import com.psl.tapestry.service.UserService;
 
 @Import(stylesheet="login.css")
@@ -52,13 +53,29 @@ public class Login {
 	
 
 	void onValidateFromLogin() {
-		if (!email.equals("users@tapestry.apache.org") /*|| userService.findUserByEmail(email) != null*/) {
-			login.recordError(emailField,
-					"Try with user: users@tapestry.apache.org");
-		}
+		
+		try {
+			User user = userService.findUserByEmail(email);
+			
+			if (user != null) {
+				if (!user.getPassword().equals(password)) {
+					login.recordError(passwordField, "Invalid credentials");
+				}
+			}
+			
+//			if (!email.equals("users@tapestry.apache.org") || user != null) {
+//				login.recordError(emailField,
+//						"Try with user: users@tapestry.apache.org");
+//			}
 
-		if (!password.equals("Tapestry5"))
-			login.recordError(passwordField, "Try with password: Tapestry5");
+			if (email.equals("users@tapestry.apache.org") && !password.equals("Tapestry5")) {
+				login.recordError(passwordField, "Try with password: Tapestry5");
+			}
+		} catch (NullPointerException e) {
+			login.recordError("User doesn't exist");
+		}
+		
+		
 
 	}
 

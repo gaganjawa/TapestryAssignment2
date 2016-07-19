@@ -28,7 +28,7 @@ public class SpringDataTest {
 		User user = new User(DummyData.firstName, DummyData.lastName,
 				DummyData.username, DummyData.password, DummyData.email,
 				DummyData.mobile, DummyData.enabled, DummyData.locked);
-		Assert.assertEquals("Dummy", user.getFirstname());
+		Assert.assertEquals("Dummy", user.getFirstName());
 	}
 
 	@Test
@@ -48,7 +48,7 @@ public class SpringDataTest {
 		Assert.assertEquals(2, users.size());
 		User newUser = users.get(0);
 
-		Assert.assertNotEquals("Jane Doe", newUser.getFirstname());
+		Assert.assertNotEquals("Jane Doe", newUser.getFirstName());
 		Assert.assertNotEquals("gagan@psl.com", newUser.getEmail());
 		Assert.assertNotEquals("2125552121", newUser.getMobile());
 	}
