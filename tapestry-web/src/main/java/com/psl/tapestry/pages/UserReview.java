@@ -10,7 +10,7 @@ import com.psl.tapestry.entities.User;
 import com.psl.tapestry.service.UserService;
 
 /**
- * View User details.
+ * View User details by clicking on a user from the grid.
  * @author gagan_jawa
  *
  */
@@ -32,11 +32,9 @@ public class UserReview {
 
 	// The code
 
-	ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-			"SpringConfiguration.xml");
+	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("SpringConfiguration.xml");
 
-	UserService userService = (UserService) applicationContext
-			.getBean("userService");
+	UserService userService = (UserService) applicationContext.getBean("userService");
 
 	void onActivate(int userId) {
 		this.userId = userId;

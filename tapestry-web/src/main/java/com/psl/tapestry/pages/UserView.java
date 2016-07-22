@@ -20,7 +20,7 @@ import com.psl.tapestry.exception.NoUserPresentException;
 import com.psl.tapestry.service.UserService;
 
 /**
- * User View after user sign in.
+ * User Page after user signs in.
  * 
  * @author gagan_jawa
  *

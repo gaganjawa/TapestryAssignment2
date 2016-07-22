@@ -21,6 +21,7 @@
 									<t:submit class="btn btn-large btn-primary" value="Sign in" />
 									<t:actionlink t:id="register">Register</t:actionlink>
 								</div>
+								<t:facebookconnect t:id="facebook">Facebook Login</t:facebookconnect>
 								<t:errors globalOnly="true" />
 							</div>
 						</div>

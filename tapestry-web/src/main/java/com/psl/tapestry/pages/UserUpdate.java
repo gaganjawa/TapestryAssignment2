@@ -16,6 +16,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.psl.tapestry.entities.User;
 import com.psl.tapestry.service.UserService;
 
+/**
+ * Performs update operation for user.
+ * 
+ * @author gagan_jawa
+ *
+ */
 public class UserUpdate {
 
 	@Inject
@@ -37,21 +43,15 @@ public class UserUpdate {
 	@InjectComponent
 	private Form form;
 	
-	private int i=0;
+	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("SpringConfiguration.xml");
 
-	ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-			"SpringConfiguration.xml");
-
-	UserService userService = (UserService) applicationContext
-			.getBean("userService");
+	UserService userService = (UserService) applicationContext.getBean("userService");
 
 	// The code
 	
 	@PageLoaded
 	public void fetchUsers() {
-		System.out.println("###########"+userId);
 		users = userService.getAllUsers();
-		System.out.println("!!!!!!!!!!!!!!!"+users);
 	}
 
 	void onActivate(int userId) {
@@ -101,7 +101,6 @@ public class UserUpdate {
     }
 
 	Object onSuccess() {
-		
 		alertManager.success("User updated.");
 		return UserView.class;
 	}

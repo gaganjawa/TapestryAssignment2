@@ -8,6 +8,7 @@ import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.Request;
@@ -15,6 +16,9 @@ import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
 import org.slf4j.Logger;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.connect.FacebookServiceProvider;
+import org.springframework.social.oauth2.OAuth2ServiceProvider;
 
 import com.psl.tapestry.service.UserService;
 import com.psl.tapestry.service.UserServiceImpl;
@@ -25,6 +29,10 @@ import com.psl.tapestry.service.UserServiceImpl;
  * service definitions.
  */
 public class AppModule {
+	
+	private static final String FACEBOOK_CLIENT_ID = "934975206648153";
+	private static final String FACEBOOK_CLIENT_SECRET = "fc4c999859cdcc6351138d04861d7c06";
+	
 	public static void bind(ServiceBinder binder) {
 		// binder.bind(MyServiceInterface.class, MyServiceImpl.class);
 
@@ -73,8 +81,15 @@ public class AppModule {
 		// used to secure
 		// the hidden field data stored in forms to encrypt and digitally sign
 		// client-side data.
-		configuration.add(SymbolConstants.HMAC_PASSPHRASE,
-				"sfdgf45sd61vsd5g74s8erf4sd531vs3d85f74s35f");
+		configuration.add(SymbolConstants.HMAC_PASSPHRASE, "sfdgf45sd61vsd5g74s8erf4sd531vs3d85f74s35f");
+		configuration.add(FACEBOOK_CLIENT_ID, "1339036332791618");
+		configuration.add(FACEBOOK_CLIENT_SECRET, "c505dc861383eb51e11c95e0d57414ea");
+	}
+
+	public OAuth2ServiceProvider<Facebook> buildFacebookService(
+			@Symbol(FACEBOOK_CLIENT_ID) final String clientId,
+			@Symbol(FACEBOOK_CLIENT_SECRET) final String clientSecret) {
+		return new FacebookServiceProvider(clientId, clientSecret, "tapestry-web");
 	}
 
 	/**
