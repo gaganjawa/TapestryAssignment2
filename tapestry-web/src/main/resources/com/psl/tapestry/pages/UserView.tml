@@ -13,7 +13,7 @@
 					<p:actionsCell>
 						<t:pagelink page="userReview" context="user.id">Review</t:pagelink>&nbsp;&nbsp;
 						<t:pagelink page="userUpdate" context="user.id">Update</t:pagelink>&nbsp;&nbsp;
-						<t:eventlink event="delete" context="user.id" >Delete</t:eventlink>
+						<t:eventlink event="delete" t:mixins="confirm" context="user.id" >Delete</t:eventlink>
 					</p:actionsCell>
 					<p:rowNoCell>
 						${rowNo}

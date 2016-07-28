@@ -3,6 +3,7 @@ package com.psl.tapestry.pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -26,6 +27,9 @@ import com.psl.tapestry.service.UserService;
  *
  */
 public class UserView {
+	
+	@Inject
+	private AlertManager alertManager;
 	
 	@Property
 	private int userId;
@@ -119,11 +123,18 @@ public class UserView {
 		return rowNo;
 	}
 	
-	void onDelete(int id) throws NoUserPresentException {
+	Object onDelete(int id) throws NoUserPresentException {
 		user = userService.findUserById(id);
 		users.remove(user);
 		userService.deleteUser(id);
-		return;
+		try {
+			pageLoaded();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		alertManager.success("User deleted.");
+		return UserView.class;
 	}
 	
 

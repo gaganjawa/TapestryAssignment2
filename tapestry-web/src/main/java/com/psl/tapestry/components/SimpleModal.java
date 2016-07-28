@@ -10,8 +10,6 @@ import org.apache.tapestry5.services.ajax.JavaScriptCallback;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.json.JSONObject;
 
-import com.google.gson.JsonObject;
-
 public class SimpleModal implements ClientElement {
 	
 	@Parameter(name = "componentClientId", value="prop:componentResources.id", defaultPrefix = BindingConstants.LITERAL)

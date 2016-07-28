@@ -88,6 +88,7 @@ public class Login {
 	void onValidateFromLogin() {
 		
 		try {
+			System.out.println(email);
 			com.psl.tapestry.entities.User user = userService.findUserByEmail(email);
 			
 			if (user != null) {
